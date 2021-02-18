@@ -1,0 +1,7 @@
+<List @items={{@people}} as |results|>
+  {{#each results as |person|}}
+    <li>
+      <Person @person={{person}} />
+    </li>
+  {{/each}}
+</List>

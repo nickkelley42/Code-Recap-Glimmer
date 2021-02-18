@@ -29,8 +29,24 @@ const NAMES = [
   'Zane',
 ];
 
+const PLANETS = [
+  'mercury',
+  'venus',
+  'earth',
+  'mars',
+  'jupiter',
+  'saturn',
+  'neptune',
+  'uranus',
+  'pluto'
+];
+
 export default Factory.extend({
   name(i) {
     return NAMES[i % NAMES.length];
-  }
+  },
+
+  planet(i) {
+    return PLANETS[i % PLANETS.length];
+  },
 });
