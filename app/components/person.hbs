@@ -1,6 +1,11 @@
 <h3>{{@person.name}}</h3>
-<img
-  class="planet"
-  src="/planets/{{@person.planet}}.jpg"
-  alt={{@person.planet}}
-/>
+<button type="button" {{on "click" this.select}}>
+  Edit
+</button>
+<p>
+  <img
+    class="planet"
+    src="/planets/{{@person.planet}}.jpg"
+    alt={{@person.planet}}
+  />
+</p>

@@ -1,0 +1,11 @@
+{{#if this.person}}
+  <h2>Person Editor</h2>
+  Editing {{this.person.name}}
+
+  <p>
+    <label>Planet:
+      <input value={{this.person.planet}} {{on "change" this.updatePerson}}/>
+    </label>
+  </p>
+
+{{/if}}
