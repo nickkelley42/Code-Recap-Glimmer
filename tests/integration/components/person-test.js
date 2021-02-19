@@ -6,19 +6,8 @@ import {
 } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-import Service from '@ember/service';
-class MockSelectedPersonService extends Service {
-  constructor() {
-    super(...arguments);
-    this.selectPersonCalls = [];
-  }
+import { MockSelectedPersonService } from './MockSelectedPersonService';
 
-  selectPerson() {
-    for (let fn of this.selectPersonCalls) {
-      fn(...arguments);
-    }
-  }
-}
 
 module('Integration | Component | person', function(hooks) {
   setupRenderingTest(hooks);
@@ -30,7 +19,7 @@ module('Integration | Component | person', function(hooks) {
   test('it sends its person to SelectedPersonService', async function(assert) {
     // Arrange
 
-    this.person  = { name: 'Namey Nameson', planet: 'Mars' };
+    this.person  = { name: 'Namey Nameson', planet: 'mars' };
 
     // Add an assertion to the mock service
     const selectedService = this.owner.lookup('service:selected-person');
@@ -46,6 +35,6 @@ module('Integration | Component | person', function(hooks) {
     await click('button[data-test-sel="edit-button');
 
     // Assert
-    assert.expect(1);
+    assert.expect(1); // the assertion is set up in selectedService above
   });
 });

@@ -1,26 +1,30 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import {
+  render,
+  click,
+} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+
+import { MockConfirmService } from './MockConfirmService';
 
 module('Integration | Component | confirm-button', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  hooks.beforeEach(function() {
+    this.owner.register('service:confirmation', MockConfirmService);
+  });
 
-    await render(hbs`<ConfirmButton />`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
+  test('it calls the action provided via the template', async function(assert) {
+    this.myAction = function() {
+      assert.ok(true, "myAction was triggered");
+    }
     await render(hbs`
-      <ConfirmButton>
-        template block text
-      </ConfirmButton>
+      <ConfirmButton @action={{myAction}}>Button</ConfirmButton>
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    await click('button');
+
+    assert.expect(1, 'myAction should trigger');
   });
 });

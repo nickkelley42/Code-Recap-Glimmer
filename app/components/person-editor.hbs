@@ -10,7 +10,11 @@
     Cancel
   </ConfirmButton>
 
-  <ConfirmButton @action={{this.update}} @message="Are you sure you want to update?">
+  <ConfirmButton
+    @action={{this.update}}
+    @message="Are you sure you want to update?"
+    data-test-sel="edit-confirm-button"
+  >
     Update
   </ConfirmButton>
 

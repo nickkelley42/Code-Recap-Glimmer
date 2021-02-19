@@ -1,26 +1,38 @@
-import { module, skip } from 'qunit';
+import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import {
+  render,
+  click,
+} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+
+import { MockSelectedPersonService } from './MockSelectedPersonService';
+import { MockConfirmService } from './MockConfirmService';
 
 module('Integration | Component | person-editor', function(hooks) {
   setupRenderingTest(hooks);
 
-  skip('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  hooks.beforeEach(function() {
+    this.owner.register('service:selected-person', MockSelectedPersonService);
+    this.owner.register('service:confirmation', MockConfirmService);
+  });
+
+  test('it calls updatePlanetAndDeselect on update', async function(assert) {
+    // Arrange
+    this.person = { name: 'Namey Nameson', planet: 'mars' };
+
+    const selectedService = this.owner.lookup('service:selected-person');
+    selectedService.selected = this.person;
+    selectedService.updatePlanetAndDeselectCalls.push((planet) => {
+      assert.equal(typeof planet, 'string', 'planet should be a string');
+    });
 
     await render(hbs`<PersonEditor />`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    // Act
+    await click('button[data-test-sel="edit-confirm-button"]');
 
-    // Template block usage:
-    await render(hbs`
-      <PersonEditor>
-        template block text
-      </PersonEditor>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    // Assert
+    assert.expect(1);
   });
 });
