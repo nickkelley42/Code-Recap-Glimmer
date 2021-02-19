@@ -1,13 +1,7 @@
-<List::Nav
-  @prev={{fn this.prevPage}}
-  @next={{fn this.nextPage}}
-/>
+<List::Nav @prev={{fn this.prevPage}} @next={{fn this.nextPage}} />
 
 <ul ...attributes >
   {{yield this.results}}
 </ul>
 
-<List::Nav
-  @prev={{fn this.prevPage}}
-  @next={{fn this.nextPage}}
-/>
+<List::Nav @prev={{fn this.prevPage}} @next={{fn this.nextPage}} />

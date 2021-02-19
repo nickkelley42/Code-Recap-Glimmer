@@ -1,8 +1,4 @@
-<List
-  class="people-list"
-  @items={{@people}}
-  as |results|
->
+<List class="people-list" @items={{@people}} as |results| >
   {{#each results as |person|}}
     <li>
       <Person @person={{person}} />
