@@ -21,6 +21,7 @@ export default class SelectedPersonService extends Service {
   updatePlanet(planet) {
     if (this.selected) {
       this.selected.planet = planet;
+      this.selected.save();
     }
   }
 

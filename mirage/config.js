@@ -25,4 +25,5 @@ export default function() {
   */
 
   this.get('/people');
+  this.patch('/people/:id');
 }
