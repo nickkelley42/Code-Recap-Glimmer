@@ -5,11 +5,17 @@ import { action } from '@ember/object';
 export default class PersonEditorComponent extends Component {
   @service SelectedPerson;
 
+  newPlanet = "";
+
   get person() {
     return this.SelectedPerson.selected;
   }
 
-  @action updatePerson(event) {
-    this.person.planet = event.target.value;
+  @action update() {
+    this.SelectedPerson.updatePlanetAndDeselect(this.newPlanet);
+  }
+
+  @action cancel() {
+    this.SelectedPerson.deselect();
   }
 }

@@ -1,11 +1,17 @@
 {{#if this.person}}
   <h2>Person Editor</h2>
-  Editing {{this.person.name}}
+  Editing {{this.person.name}}<br />
 
-  <p>
-    <label>Planet:
-      <input value={{this.person.planet}} {{on "change" this.updatePerson}}/>
-    </label>
-  </p>
+  <label>Planet:
+    <Input @value={{this.newPlanet}} />
+  </label><br/>
+
+  <ConfirmButton @action={{this.cancel}} @message="Really cancel?">
+    Cancel
+  </ConfirmButton>
+
+  <ConfirmButton @action={{this.update}} @message="Are you sure you want to update?">
+    Update
+  </ConfirmButton>
 
 {{/if}}

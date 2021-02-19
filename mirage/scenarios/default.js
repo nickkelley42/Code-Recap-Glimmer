@@ -7,5 +7,5 @@ export default function(server) {
 
   // server.createList('post', 10);
   //
-  server.createList('person', 200);
+  server.createList('person', 26);
 }
