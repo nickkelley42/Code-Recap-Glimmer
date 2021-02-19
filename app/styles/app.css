@@ -1,7 +1,13 @@
 body {
-  background: black;
   padding: 0;
   margin: 0;
+}
+.wrapper {
+  background: black;
+  margin: 0;
+  box-sizing: border-box;
+  /* padding: 0 auto; */
+  min-height: 100vh;
 }
 
 .container {
@@ -11,6 +17,7 @@ body {
   margin: 0 auto;
   min-height: 100vh;
   box-sizing: border-box;
+  border-radius:0.3rem;
 }
 
 img.planet {
