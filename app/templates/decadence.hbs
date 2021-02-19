@@ -2,4 +2,10 @@
 
 <h2>Provider Components and Recursive Component Rendering</h2>
 
+<Decadence::Parser @html={{@model}} as |data|>
+  {{#each data as |item|}}
+    {{component item.component data=item.data}}
+  {{/each}}
+</Decadence::Parser>
+
 {{outlet}}
